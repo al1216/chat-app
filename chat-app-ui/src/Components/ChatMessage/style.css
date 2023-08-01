@@ -1,0 +1,148 @@
+.msg-container{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    gap: 3rem;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    padding-bottom: 1rem;
+}
+
+.navbar{
+    width: 100%;
+    height: 15rem;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 2rem;
+}
+
+.heading-navbar{
+    color: #FFF;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 7.2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0;
+}
+
+.send-msg-area{
+    width: 100vw;
+    display: flex;
+    box-sizing: border-box;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    justify-content: center;
+    position: fixed;
+    bottom: 1rem;
+}
+
+.wrapper-send-msg-area{
+    width: 100%;
+    height: 12rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #F0F0F0;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.message{
+    outline: 0;
+    border: none;
+    width: 99%;
+    height: 3rem;
+    background-color: #F0F0F0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.wrapper-button{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.send-now{
+    cursor: pointer;
+    width: 12rem;
+    height: 4rem;
+    background-color: black;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: white;
+    border: none;
+    border-radius: 1rem;
+}
+
+.messages-area{
+    width: 100vw;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.5rem;
+}
+
+.a-message{
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.reverse{
+    flex-direction: row-reverse;
+    justify-content: end;
+}
+
+.avatar-img{
+    width: 4rem;
+    height: 4rem;
+}
+
+.avatar2-img{
+    width: 6rem;
+    height: 6rem;
+}
+
+.msg-bubble{
+    width: 20rem;
+    height: 6rem;
+    background-color: #F2F2F2;
+    border-radius: 1rem 1rem 1rem 0;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+.reverse-radius{
+    border-radius: 1rem 1rem 0 1rem;
+}
+.msg-caption{
+    margin: 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

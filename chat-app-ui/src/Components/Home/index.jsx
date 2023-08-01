@@ -4,8 +4,10 @@ import "./style.css";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import copy from "copy-to-clipboard";
+import { useNavigate } from "react-router";
 
 export default function Index() {
+    let navigate = useNavigate();
   const [clickNextBtn, setClickNextBtn] = useState(false);
   const [name, setName] = useState("");
   const [id, setId] = useState("");
@@ -27,6 +29,7 @@ export default function Index() {
           },
         });
       } else {
+        localStorage.setItem("name",name);
         copy(id);
         toast.info(`Peer-id copied to clipboard: ${id}`, {
           position: "top-center",
@@ -46,8 +49,7 @@ export default function Index() {
         setClickNextBtn(true);
       }
     } else {
-      //check and direct to next page
-      if (pid.trim().length === 0 || pid != id) {
+      if (pid.trim().length === 0 || pid !== id) {
         toast.error("Please, enter valid peer-id :(", {
           position: "top-center",
           autoClose: 5000,
@@ -62,7 +64,7 @@ export default function Index() {
           },
         });
       } else {
-        //navigate to next page
+        navigate("/app");
       }
     }
   };
@@ -92,6 +94,7 @@ export default function Index() {
             type="text"
             className="name"
             onChange={(e) => setName(e.target.value)}
+            placeholder="Enter username"
           />
           {clickNextBtn && <p className="id-label">Peer Id:</p>}
           {clickNextBtn && (
@@ -99,6 +102,7 @@ export default function Index() {
               type="text"
               className="peer-id"
               onChange={(e) => setPid(e.target.value)}
+              placeholder="Enter peer-id"
             />
           )}
           <button
