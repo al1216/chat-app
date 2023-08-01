@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "./style.css";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import copy from "copy-to-clipboard";
 
 export default function Index() {
   const [clickNextBtn, setClickNextBtn] = useState(false);
   const [name, setName] = useState("");
   const [id, setId] = useState("");
+  const [pid, setPid] = useState("");
   const onClickHomeBtn = () => {
     if (!clickNextBtn) {
       if (name.trim().length === 0) {
@@ -19,16 +22,32 @@ export default function Index() {
           draggable: true,
           progress: undefined,
           theme: "light",
-          style:{
-            fontSize: '1.5rem'
-          }
+          style: {
+            fontSize: "1.5rem",
+          },
         });
       } else {
+        copy(id);
+        toast.info(`Peer-id copied to clipboard: ${id}`, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          style: {
+            fontSize: "1.5rem",
+            width: "40rem",
+            height: "8rem",
+          },
+        });
         setClickNextBtn(true);
       }
     } else {
       //check and direct to next page
-      if (id.trim().length === 0) {
+      if (pid.trim().length === 0 || pid != id) {
         toast.error("Please, enter valid peer-id :(", {
           position: "top-center",
           autoClose: 5000,
@@ -38,16 +57,29 @@ export default function Index() {
           draggable: true,
           progress: undefined,
           theme: "light",
-          style:{
-            fontSize: '1.5rem'
-          }
+          style: {
+            fontSize: "1.5rem",
+          },
         });
       } else {
         //navigate to next page
       }
-      
     }
   };
+  const getPeerIdFromBackend = async () => {
+    await axios
+      .get(`${process.env.REACT_APP_HOST}/api/get-peer-id`)
+      .then((res) => {
+        setId(res.data.id);
+        localStorage.setItem("peer-id", res.data.id);
+      })
+      .catch((err) => {
+        console.log("Error from home:", err);
+      });
+  };
+  useEffect(() => {
+    getPeerIdFromBackend();
+  });
   return (
     <div className="home-container">
       <div className="left-side-home">
@@ -62,7 +94,13 @@ export default function Index() {
             onChange={(e) => setName(e.target.value)}
           />
           {clickNextBtn && <p className="id-label">Peer Id:</p>}
-          {clickNextBtn && <input type="text" className="peer-id" />}
+          {clickNextBtn && (
+            <input
+              type="text"
+              className="peer-id"
+              onChange={(e) => setPid(e.target.value)}
+            />
+          )}
           <button
             type="submit"
             className="start-btn"
