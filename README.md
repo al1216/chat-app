@@ -2,8 +2,10 @@
 
 ## Preview
 
-[![preview](https://drive.google.com/file/d/1ClNClD3DoewjU2rtGN4nm5948UhPIW11/view?usp=drive_link)](https://drive.google.com/file/d/1pE4AhkeqMVZ3ywNRfrfAofXpTxPEcYrv/view?usp=drive_link)
-<img width="1440" alt="Screenshot 2023-08-02 at 5 17 25 PM" src="https://github.com/al1216/chat-app/assets/71925655/c9eb7169-62c8-4a74-8253-ee39aebc1ca3"> (https://drive.google.com/file/d/1pE4AhkeqMVZ3ywNRfrfAofXpTxPEcYrv/view?usp=drive_link)
+<img width="1440" alt="Screenshot 2023-08-02 at 5 17 25 PM" src="https://github.com/al1216/chat-app/assets/71925655/c9eb7169-62c8-4a74-8253-ee39aebc1ca3"> 
+<img width="1440" alt="Screenshot 2023-08-02 at 5 24 55 PM" src="https://github.com/al1216/chat-app/assets/71925655/2c2bd1b7-2253-47ea-8beb-893baa118688">
+
+(https://drive.google.com/file/d/1pE4AhkeqMVZ3ywNRfrfAofXpTxPEcYrv/view?usp=drive_link)
 
 
 Click the above image to watch a video of the P2P chatter app in action.
