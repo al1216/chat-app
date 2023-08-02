@@ -89,3 +89,91 @@
     line-height: normal;
     cursor: pointer;
 }
+
+@media (max-width: 500px) and (min-width: 200px) {
+    .home-container {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .heading-website {
+        color: black;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 3rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin: 0;
+        text-align: center;
+    }
+
+    .right-side-home {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--background, #F5F5F5);
+    }
+
+    .cred-container {
+        box-sizing: border-box;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        width: 38.5rem;
+        height: 31.7rem;
+        border-radius: 2rem;
+        background: #FFF;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .name-label,
+    .id-label {
+        color: #000;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.6rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-bottom: 0;
+    }
+
+    .name,
+    .peer-id {
+        border: none;
+        outline: 0;
+        width: 34rem;
+        height: 4rem;
+        border-radius: 1rem;
+        background: var(--background, #F5F5F5);
+        box-sizing: border-box;
+        padding-left: 1.5rem;
+        color: #000;
+        font-family: Lato;
+        font-size: 1.6rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .start-btn {
+        width: 34rem;
+        height: 4rem;
+        border-radius: 1rem;
+        background: #000;
+        border: none;
+        color: #FFF;
+        text-align: center;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        cursor: pointer;
+    }
+
+}

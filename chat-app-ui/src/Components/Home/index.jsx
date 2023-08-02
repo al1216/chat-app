@@ -7,16 +7,17 @@ import copy from "copy-to-clipboard";
 import { useNavigate } from "react-router";
 
 export default function Index() {
-    let navigate = useNavigate();
+  let navigate = useNavigate();
   const [clickNextBtn, setClickNextBtn] = useState(false);
   const [name, setName] = useState("");
   const [id, setId] = useState("");
   const [pid, setPid] = useState("");
-  const onClickHomeBtn = () => {
+  let [innerWidth, setInnerWidth] = useState(window.innerWidth);
+  const onClickHomeBtn = async () => {
     if (!clickNextBtn) {
       if (name.trim().length === 0) {
         toast.error("Please, enter valid username :(", {
-          position: "top-center",
+          position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -26,26 +27,32 @@ export default function Index() {
           theme: "light",
           style: {
             fontSize: "1.5rem",
+            width: innerWidth > 500? "32rem": "30rem",
+            height: innerWidth > 500 ? "8rem" : "4rem"
           },
         });
       } else {
-        localStorage.setItem("name",name);
-        copy(id);
-        toast.info(`Peer-id copied to clipboard: ${id}`, {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          style: {
-            fontSize: "1.5rem",
-            width: "40rem",
-            height: "8rem",
-          },
-        });
+        await getPeerIdFromBackend();
+        localStorage.setItem("name", name);
+        copy(localStorage.getItem("peer-id"));
+        toast.info(
+          `Peer-id copied to clipboard: ${localStorage.getItem("peer-id")}`,
+          {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            style: {
+              fontSize: "1.5rem",
+              width: innerWidth > 500 ? "40rem" : "40rem",
+              height: "7rem",
+            },
+          }
+        );
         setClickNextBtn(true);
       }
     } else {
@@ -80,15 +87,18 @@ export default function Index() {
       });
   };
   useEffect(() => {
-    getPeerIdFromBackend();
-  });
+    window.addEventListener("resize", () => {
+      setInnerWidth(window.innerWidth);
+    });
+  }, []);
   return (
     <div className="home-container">
-      <div className="left-side-home">
+      {innerWidth > 500 && <div className="left-side-home">
         <h1 className="heading-website">P2P Chatter</h1>
-      </div>
+      </div>}
       <div className="right-side-home">
         <div className="cred-container">
+        {innerWidth < 500 && <h1 className="heading-website">P2P Chatter</h1>}
           <p className="name-label">Username:</p>
           <input
             type="text"

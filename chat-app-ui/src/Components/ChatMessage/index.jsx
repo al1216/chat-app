@@ -1,14 +1,36 @@
 import React, { useState } from "react";
 import "./style.css";
+import axios from "axios";
 
 export default function Index() {
   const [chat, setChat] = useState("");
   const [arrChat, setArrChat] = useState([]);
+  const sendMsgToPeer = async () => {
+    await axios
+      .get(`${process.env.REACT_APP_HOST}/api/connect-peers`, {
+        params: {
+          peerId: localStorage.getItem("peer-id"),
+          msg: chat,
+        },
+      })
+      .then((res) => {
+        setArrChat([...arrChat, res.data.msg]);
+        console.log(res.data.msg);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const onClickSendMsg = () => {
-    document.getElementsByClassName("msg-bubble")[0].style.width = `${chat.length+5}rem`
+    // document.getElementsByClassName("msg-bubble")[0].style.width = `${
+    //   chat.length + 5
+    // }rem`;
     setArrChat([...arrChat, chat]);
-    localStorage.setItem("chats",JSON.stringify(arrChat));
+    localStorage.setItem("chats", JSON.stringify([...arrChat, chat]));
+    sendMsgToPeer();
     setChat("");
+    setArrChat(arrChat.reverse());
   };
   return (
     <div className="msg-container">
@@ -16,18 +38,14 @@ export default function Index() {
         <h1 className="heading-navbar">P2P Chatter</h1>
       </div>
       <div className="messages-area">
-        <div className="a-message">
-          <img src="avatar.png" alt="" className="avatar-img" />
-          <div className="msg-bubble">
-            <p className="msg-caption">{arrChat[0] ? arrChat[0] : ""}</p>
+        {arrChat.map((c) => (
+          <div className="a-message">
+            <img src="avatar.png" alt="" className="avatar-img" />
+            <div className="msg-bubble">
+              <p className="msg-caption">{c ? c: ""}</p>
+            </div>
           </div>
-        </div>
-        <div className="a-message reverse">
-          <img src="avatar2.png" alt="" className="avatar2-img" />
-          <div className="msg-bubble reverse-radius">
-            <p className="msg-caption">{arrChat[1] ? arrChat[1] : ""}</p>
-          </div>
-        </div>
+        ))}
       </div>
       <div className="send-msg-area">
         <div className="wrapper-send-msg-area">

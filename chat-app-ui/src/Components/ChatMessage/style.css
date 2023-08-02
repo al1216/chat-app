@@ -1,7 +1,6 @@
 .msg-container{
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     gap: 3rem;
     height: 100vh;
     width: 100vw;
@@ -145,4 +144,16 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+@media (max-width: 500px) and (min-width: 200px){
+    .heading-navbar{
+        color: #FFF;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 5.5rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin: 0;
+    }
 }
