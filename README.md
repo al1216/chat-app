@@ -24,7 +24,7 @@ On 1st terminal move to chat-app-ui using
 cd chat-app-ui  
 ```
 
-and create a ## .env file
+and create a .env file
 and paste the following content
 ```
 REACT_APP_HOST = "http://localhost:4000"
@@ -35,7 +35,7 @@ On 2nd terminal move to chat-app-backend using
 ```
 cd chat-app-backend 
 ```
-and create a ## .env file
+and create a .env file
 and paste the following content
 ```
 SERVER_PORT = 4000
